@@ -26,12 +26,16 @@ public class MainCameraScript : MonoBehaviour
                 Camera.main.orthographicSize = baseorthographicSize;
                 Debug.Log("Original orthographicSize");
             }
-            else
+            else if (Mathf.Approximately(currAspectRatio,1/lastAspectRatio))
             {
                 Camera.main.orthographicSize /= currAspectRatio;
                 Debug.Log("Screen rotated");
+                
             }
-            
+
+            Debug.Log(currAspectRatio);
+            Debug.Log(1 / lastAspectRatio);
+
             lastAspectRatio = currAspectRatio;
             MiniMapScript.UpdateApectRatio();
             PlayerScript.SetBorders();
